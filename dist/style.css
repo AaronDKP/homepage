@@ -1,0 +1,1096 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+* {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--alternate-color);
+}
+
+/* Animations */
+
+@keyframes bounce {
+    from {
+        transform: translateX(0px);
+    } 
+    to {
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes bounceBack {
+    from {
+        transform: translateX(0px);
+    } 
+    to {
+        transform: translateX(10px);
+    }
+}
+
+/* Variables */
+
+:root {
+    --primary-color: #27272A;
+    --alternate-color: #fff;
+    --secondary-color: #F38181;
+    --third-color: #FCE38A;
+    --fourth-color: #3282B8;
+}
+
+.secondaryColour {
+    color: var(--secondary-color);
+}
+
+.thirdColour {
+    color: var(--third-color);
+}
+
+.fourthColour {
+    color: var(--fourth-color);
+}
+
+/* Classes with Javascript functionality */
+
+.showAside {
+    transform: translateX(0);
+}
+
+.asideOpen { 
+    transform: translateX(45vw);
+    opacity: 0.5;
+}
+
+.showMobileAside {
+    transform: translateX(-100%);
+}
+
+.asideMobileOpen {
+    transform: translateX(-62.5vw);
+    opacity: 0.5;
+}
+
+/* Element Specific Styling */
+
+body {
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+    max-width: 100vw;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    padding: 0 3.5rem;
+    height: 3.5rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    z-index: 3;
+}
+
+.mobileAsideBtn {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: calc(100vw - 3.5rem);
+    width: 2rem;
+    height: auto;
+    background: none;
+    border: none;
+}
+
+#mobileOpenAsideBtn {
+    display: none;
+}
+
+#mobileOpenAsideIcon {
+    display: inline-block;
+    fill: var(--alternate-color);
+}
+
+#mobileCloseAsideIcon {
+    display: inline-block;
+    text-align: center;
+    font-size: 3.8rem;
+    transform: rotateZ(45deg);
+}
+
+#headerSwitch {
+    display: inline-block;
+    position: absolute;
+    left: calc(100vw - 7rem);
+}
+
+.switch {
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--alternate-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 6px;
+}
+
+input:checked + .toggle {
+    background-color: var(--alternate-color);
+}
+
+input:focus + .toggle {
+    box-shadow: 0 0 1px var(--alternate-color);
+}
+
+input:checked + .toggle:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+
+.toggle:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--primary-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 4px;
+  }
+
+.signature {
+    font-size: 2rem;
+    font-family: 'Alex Brush';
+    font-weight: 800;
+    letter-spacing: -0.2rem;
+    transform: translateY(5%);
+}
+
+aside {
+    background-color: var(--primary-color);
+    display: flex;
+    position: fixed;
+    left: 0;
+    height: calc(100vh - 7rem);
+    width: 45vw;
+    z-index: 3;
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+}
+
+#asideSwitch {
+    display: none;
+}
+
+.closeMenu {
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeMenu>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform: rotateZ(45deg);
+    transition: transform 500ms ease;
+}
+
+.closeMenu>button:hover {
+    transform: rotateZ(225deg);
+}
+
+.menuContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.menuContainer>h1 {
+    font-weight: 800;
+    font-size: 4rem;
+}
+
+.menuContainer>ul>li {
+    list-style-type: none;
+    margin-bottom: 0.6rem;
+}
+
+.menuContainer>ul>li>button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 800;
+    font-size: 2.2rem;
+}
+
+.menuContainer>ul>li>button>div {
+    position: relative;
+}
+
+.menuContainer>ul>li>button:hover div:after {
+    width: calc(100% + 1rem);
+}
+
+.menuContainer>ul>li>button>div:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: -0.5rem;
+    height: 50%;
+    width: 0;
+    z-index: -10;
+    transition: width 500ms ease;
+}
+
+.menuContainer>ul>li>button>div>span {
+    display: inline;
+}
+
+.spanActive {
+    display: inline;
+}
+
+#asideBtnHome>div::after {
+    background-color: var(--secondary-color);
+}
+
+#asideBtnAbout>div::after {
+    background-color: var(--third-color);
+}
+
+#asideBtnProjects>div::after {
+    background-color: var(--fourth-color);
+}
+
+.directoryLink:disabled, .directoryLink:disabled div {
+    pointer-events: none;
+    color: rgba(113, 113, 122, 1);
+}
+
+.asideSpan {
+    transition: all 400ms ease;
+}
+
+.bookmark {
+    background: none;
+    height: calc(100vh - 7rem);
+    width: 2rem;
+    position: absolute;
+    left: 3.5rem;
+    z-index: 1;
+}
+
+.menuContainer>ul>li>button>span {
+    display: none;
+}
+
+.menuContactContainer> * {
+    margin-bottom: 0.4rem;
+}
+
+.menuContactContainer>p {
+    font-weight: 800;
+}
+
+.menuContactContainer>p:nth-child(2) {
+    font-family: 'Alex Brush';
+    font-size: 1.8rem;
+}
+
+.menuContactContainer>svg {
+    margin-top: 0.5rem;
+    height: 2.5rem;
+    width: auto;
+    transition: transform 500ms ease;
+    cursor: pointer;
+}
+
+.menuContactContainer>svg:hover {
+    transform: scale(1.1);
+} 
+
+.floatingMenuBtn { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: calc(50% - 2rem);
+    left: 5%;
+    z-index: 2;
+    height: 4rem;
+    width: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    animation: bounce 800ms alternate infinite cubic-bezier(.2, .65, .6, 1);
+}
+
+.floatingMenuBtn:hover .menuTxt::after {
+    transform-origin: 0%;
+    transform: scaleX(1);
+}
+
+.menuTxt {
+    transform: rotateZ(270deg);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.menuTxt::after {
+    content: '';
+    display: block;
+    transform-origin: 0%;
+    transform: scaleX(0);
+    border-bottom: currentColor solid 2px;
+    transition: transform 500ms ease;
+}
+
+.floatingMenuBtn>svg {
+    height: 2.5rem;
+    fill: var(--alternate-color);
+}
+
+main { 
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    width: 100%;
+    margin-top: 3.5rem;
+    transition: transform 500ms ease, opacity 500ms ease;
+    scroll-snap-type: y mandatory;
+}
+
+/* Welcome Section */
+
+#welcomeSection {
+    height: calc(100vh - 7rem);
+    scroll-snap-align: start;
+}
+
+.welcomePane{
+    background-color: var(--secondary-color);
+    height: calc(100vh - 7rem);
+    width: calc(50% - 3.5rem);
+    position: relative;
+    left: 3.5rem;
+}
+
+.welcomePane>div {
+    display: flex;
+    width: 4.4rem;
+    align-items: center;
+    position: absolute;
+    bottom: 1.5rem;
+    right: -1rem;
+    rotate: 270deg;
+    font-size: 1rem;
+    font-weight: 700;
+    fill: var(--alternate-color);
+}
+
+.welcomePane>div>p {
+    margin-left: -5px;
+    margin-top: -2px;
+}
+
+.welcomeMsg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -50%;
+    left: 50%;
+    width: fit-content;
+    color: currentColor;
+    font-size: min(12vw, 12rem);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -6px;
+    transform: translate(-50%, -50%);
+}
+
+.welcomeMsg>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* About Section */
+
+#aboutSection {
+    height: calc(100vh - 7rem);
+    margin: 3.5rem 0;
+    scroll-snap-align: start;
+}
+
+.aboutContainer {
+    height: 100%;
+    width: 100vw;
+    transition: transform 600ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.aboutPane {
+    background-color: var(--third-color);
+    height: calc(100vh - 7rem);
+    width: 25vw;
+    position: absolute;
+    left: 3.5rem;
+}
+
+.aboutPane>div {
+    display: flex;
+    width: 4.4rem;
+    align-items: center;
+    position: absolute;
+    bottom: 1.5rem;
+    right: -1rem;
+    rotate: 270deg;
+    font-size: 1rem;
+    font-weight: 700;
+    fill: var(--alternate-color);
+}
+
+.aboutPane>div>p {
+    margin-left: -5px;
+    margin-top: -2px;
+}
+
+.aboutMsg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0%;
+    left: calc(25vw + 3.5rem);
+    width: fit-content;
+    color: currentColor;
+    font-size: min(10vw, 10rem);
+    font-weight: 800;
+    line-height: 0.8;
+    transform: translateX(-50%);
+}
+
+#introContainer {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.introMsg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 10vw;
+    color: currentColor;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -2px;
+}
+
+.introMsg>div {
+    margin-bottom: 0.4rem;
+}
+
+.name {
+    margin-top: 1rem;
+    font-family: 'Alex Brush';
+    font-size: 5rem;
+}
+
+.introDotpoints {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.introDotpoints>div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.introDotpoints>:last-child {
+    text-align: center;
+    letter-spacing: 0px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.toolsContainer {
+    position: relative;
+    left: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+#languages>div>svg, #tools>div>svg{
+    margin-top: 1rem;
+    margin-left: 0.2rem;
+    height: 2rem;
+    width: auto;
+}
+
+.floatingMoreBtn { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    height: 4rem;
+    width: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    animation: bounce 600ms alternate infinite cubic-bezier(.2, .65, .6, 1);
+    rotate: 0deg;
+    transition: rotate 400ms 500ms linear;
+}  
+
+.floatingMoreBtn:hover svg {
+    rotate: 180deg;
+}
+
+.moreTxt { 
+    display: flex;
+    transform: rotateZ(90deg);
+    font-weight: 800;
+    font-size: 1.1rem;
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.floatingMoreBtn>svg {
+    display: flex;
+    height: 2.5rem;
+    rotate: 0deg;
+    transition: rotate 500ms ease;
+    fill: var(--alternate-color);
+}
+
+.backTxt {
+    display: flex;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transform: rotate(-90deg);
+    transition: transform 100ms 300ms ease;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.floatingBackBtn .moreTxt {
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.floatingBackBtn .backTxt {
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.floatingBackBtn:hover svg {
+    rotate: 0deg;
+    transition: rotate 500ms ease forwards;
+}
+
+.floatingBackBtn>svg {
+    rotate: 180deg;
+    transition: rotate 500ms ease;
+}
+
+.moreContainer {
+    background-color: var(--primary-color);
+    height: calc(100vh - 7rem);
+    width: calc(70vw);
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 100vh;
+    transform: translateX(100%);
+    transition: transform 600ms ease;
+}
+
+.showMore {
+    transform: translateX(0%);
+}
+
+.moreOpen { 
+    transform: translateX(-70vw);
+}
+
+.moreContainer>:first-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 800;
+}
+
+.moreContainer>:first-child>p {
+    font-size: 8rem;
+    letter-spacing: -1rem;
+}
+
+.moreContainer>:last-child {
+    margin: 3.5rem 3.5rem 3.5rem 1rem;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.moreContainer>:last-child>p {
+    font-size: 1.2rem;
+    max-width: 30vw;
+}
+
+/* Project Section */
+
+#projectSection {
+    height: calc(100vh - 3.5rem);
+    scroll-snap-align: start;
+}
+
+.projectPane {
+    background-color: var(--fourth-color);
+    height: calc(100vh - 7rem);
+    width: 20vw;
+    position: relative;
+    left: calc(80vw - 3.5rem);
+    top: 0;
+}
+
+.projectPane>div {
+    display: flex;
+    width: 3.4rem;
+    align-items: center;
+    position: absolute;
+    bottom: 1.5rem;
+    left: -0.5rem;
+    rotate: 90deg;
+    font-size: 1rem;
+    font-weight: 700;
+    fill: var(--alternate-color);
+    transition: transform 500ms ease;
+    transform: translateX(0%);
+    cursor: pointer;
+}
+
+.projectPane>div:hover {
+    transform: translateX(-25%);
+}
+
+.projectPane>div>p {
+    margin-left: -5px;
+    margin-top: -2px;
+}
+
+.projectMsg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: calc(-100%);
+    left: calc(80vw - 3.5rem);
+    width: fit-content;
+    color: currentColor;
+    font-size: min(10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.8;
+    transform-origin: 0%;
+    transform: rotateZ(90deg);
+}
+
+#slider {
+    position: relative;
+    top: -50vh;
+    left: calc(50% - 10vw);
+    translate: -50% -100%;
+    border: var(--fourth-color) solid 2px;
+    border-radius: 8px;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+#slides {
+    display: flex;
+    border-radius: 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+#slides::-webkit-scrollbar, #slides::-webkit-scrollbar-thumb, #slides::-webkit-scrollbar-track {
+    display: none;
+}
+
+.slide {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    height: 25vw;
+    width: 40vw;
+}
+
+.overlay {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    transition: opacity 400ms ease;
+}
+
+.overlay > p {
+    margin: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.overlay:hover {
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 400ms 200ms ease;
+}
+
+#slide-1 {
+    background-image: url(../src/img/weatherAppSlideImg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#slide-2 {
+    background-image: url(../src/img/toDoListSlideImg.png);
+    background-position-x: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#slide-3 {
+    background-image: url(../src/img/librarySlideImg.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#slide-4 {
+    background-image: url(../src/img/restaurantSlideImg.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slideLinks {
+    display: flex;
+    position: absolute;
+    top: 105%;
+}
+
+.slideLinks > a {
+    display: inline-flex;
+    aspect-ratio: 4;
+    height: 0.65rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border: 2px solid var(--fourth-color);
+    margin: 0 0.5rem;
+    transition: all 200ms linear;
+}
+  
+.slideLinks > a:active, .slideLinks > a:focus, .slideLinks > a:hover {
+    background: var(--fourth-color);
+    transition: all 200ms linear;
+}
+
+.activeLink {
+    background-color: var(--fourth-color);
+    transition: all 200ms linear;
+}
+
+.prevSlideBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 4rem;
+    position: absolute;
+    left: 1rem;
+    z-index: 2;
+}
+
+.prevSlideBtn:hover svg, .nextSlideBtn:hover svg{ 
+    transform: scale(1.4);
+}
+
+.prevSlideBtn > svg{
+    fill: #fff;
+    rotate: 180deg;
+    transform: scale(1);
+    transition: transform 400ms ease;
+}
+
+.nextSlideBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 4rem;
+    position: absolute;
+    right: 1rem;
+    z-index: 2;
+}
+
+.nextSlideBtn > svg {
+    fill: #fff;
+    transform: scale(1);
+    transition: transform 400ms ease;
+}
+
+footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 3.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    font-weight: 800;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 600px){
+    header>p {
+        translate: -50% 0;
+    }
+
+    #headerSwitch {
+        display: none;
+    }
+
+    #mobileOpenAsideBtn {
+        display: flex;
+    }
+
+    .welcomePane{
+        width: calc(50vw);
+        position: relative;
+        left: 0rem;
+    }
+
+    .welcomePane>div {
+        animation: bounceBack 500ms alternate infinite cubic-bezier(.2, .65, .6, 1);
+    }
+
+    aside {
+        left: 100vw;
+        height: calc(100vh - 7rem);
+        width: 62.5vw;
+        z-index: 3;
+        transform: translateX(100%);
+        transition: transform 500ms ease;
+    }
+
+    #asideSwitch {
+        display: inline-block;
+        position: relative;
+        right: 0;
+    }
+
+    .closeMenu {
+        display: none;
+    }
+
+    .menuContainer {
+        margin-right: 2rem;
+        align-items: flex-end;
+    }
+    
+    .menuContainer>h1 {
+        font-size: 2rem;
+    }
+    
+    .menuContainer>ul>li {
+        text-align: end;
+        margin-bottom: 1rem;
+    }
+    
+    .menuContainer>ul>li>button {
+        font-size: 1.4rem;
+    }
+
+    .menuContactContainer {
+        text-align: end;
+    }
+
+    .menuContactContainer>h2 {
+        font-size: 1.2rem;
+    }
+
+    .menuContactContainer>p:nth-child(2) {
+        font-family: 'Alex Brush';
+        font-size: 1.6rem;
+    }
+
+    .menuContactContainer>p {
+        font-size: 1rem;
+    }
+    
+    .menuContactContainer>svg {
+        height: 2rem;
+    }
+
+    .bookmark {
+        left: 90vw;
+    }
+
+    .floatingMenuBtn {
+        display: none;
+    }
+
+    .aboutPane {
+        left: 0;
+    }
+
+    .aboutPane>div {
+        animation: bounceBack 500ms alternate infinite cubic-bezier(.2, .65, .6, 1);
+    }
+
+    .aboutMsg {
+        left: calc(25vw);
+    }
+
+    .introDotpoints {
+        min-width: 60vw;
+    }
+
+    .introDotpoints>:last-child>span {
+        margin: -0.25rem 0.5rem;
+        font-size: 1.4rem;
+    }
+
+    .floatingMoreBtn { 
+        right: 4rem;
+    }  
+
+    .floatingMoreBtn>svg {
+        rotate: 180deg;
+    }
+
+    .moreContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center ;
+    }
+
+    .moreContainer>:first-child {
+        margin-top: 2rem;
+    }
+
+    .moreContainer>:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .moreContainer>:last-child>p {
+        font-size: 1.2rem;
+        max-width: 60vw;
+    }
+
+    .projectPane {
+        height: 15vh;
+        width: 100vw;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    
+    .projectMsg {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 0;
+        left: 50vw;
+        width: fit-content;
+        color: currentColor;
+        font-size: min(10vw, 8rem);
+        font-weight: 800;
+        line-height: 0.8;
+        transform-origin: 0%;
+        transform: rotateZ(0deg);
+        transform: translate(-50%, -50%);
+    }
+
+    #slider {
+        left: 50%;
+        top: 50%;
+        translate: -50% -125%;
+        width: 80vw;
+    }
+
+    .slide {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        height: 50vw;
+        width: 80vw;
+    }
+    
+}
