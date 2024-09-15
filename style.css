@@ -805,28 +805,28 @@ main {
 }
 
 #slide-1 {
-    background-image: url(../src/img/weatherAppSlideImg.png);
+    background-image: url(../homepage/src/img/weatherAppSlideImg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #slide-2 {
-    background-image: url(../src/img/toDoListSlideImg.png);
+    background-image: url(../homepage/src/img/toDoListSlideImg.png);
     background-position-x: left;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #slide-3 {
-    background-image: url(../src/img/librarySlideImg.png);
+    background-image: url(../homepage/src/img/librarySlideImg.png);
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #slide-4 {
-    background-image: url(../src/img/restaurantSlideImg.png);
+    background-image: url(../homepage/src/img/restaurantSlideImg.png);
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
